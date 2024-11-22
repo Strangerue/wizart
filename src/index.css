@@ -1,0 +1,1155 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #ffffff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: white;
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background-color: #ffffff;
+  position: fixed;
+  width: 15%;
+  height: 100vh;
+  background: #1A172A;
+}
+
+h1 {
+  font-family: 'Inter';
+  font-size: medium;
+  width: 100%;
+  height: Fixed (72px)px;
+  padding: 0px 10px 10px 10px;
+  opacity: 0px; 
+}
+
+.menu {
+  width: 100%;
+  height: Fixed (926px)px;
+  top: 152px;
+  background-color: #2200ff;
+}
+
+.menu-soon {
+  height: Hug (210px)px;
+  gap: 20px;
+  opacity: 0px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.icon {
+  width: 20px; height: 18px;
+	display: inline-block;
+	margin-right: 6px;
+  margin-bottom: 3px;
+}
+
+.menu-button {
+  color: #FEFEFE;
+  font-weight: 500;
+  font-family: 'Inter';
+  font-size: 12px;
+  padding: 10px 10px 10px 20px;
+  opacity: 0px;
+  background: #1A172A;
+  width: 100%;
+  text-align:left;
+  border-width: 0px;
+}
+
+.soon-text {
+  font-size: 12px;
+  padding-left: 20px;
+}
+
+.soon {
+  color: #949596;
+}
+
+.menu-service{
+  position: fixed;
+  width: 15%;
+  bottom: 0;
+}
+
+.menu-button:hover {
+  background: #141220;
+  cursor: pointer;
+}
+
+.menu-button:active {
+  background: #353055;
+}
+
+.active {
+  border-left-width: 3px;
+  border-left: #524EF8;
+  border-left-style:solid;
+  background-color: #353055;
+}
+
+.content {
+  position: static;
+  width: 84%;
+  height: 100vh;
+  gap: 0px;
+  opacity: 0px;
+  background-color: rgb(255, 255, 255);
+  margin-left: 15.625vw;
+  color: black;
+}
+
+.stat-and-date-row {
+  position: absolute;
+  height: Hug (44px)px;
+  width: 84%;
+  left: 15%;
+  justify-items: space-between;
+  opacity: 0px;
+}
+
+.stat-and-date{
+  display: inline-block;
+}
+
+.header{
+  padding: 0px 0px 0px 20px;
+}
+
+.date {
+  float: right;
+  padding: 10px 30px 10px 30px; 
+}
+
+.cards {
+  position: absolute;
+  width: 84%;
+  top: 15px;
+}
+
+.card-row{
+  position: absolute;
+  display: flex;
+  height: Hug (98px)px;
+  width: 81.375%;
+  left: 15.625%;
+  top: 10%;
+  opacity: 0px;
+  padding: 0px 20px 0px 20px;
+  justify-content: space-between;
+}
+
+.steps {
+  margin-top: 2%;
+}
+
+.card-column {
+  display: inline-block;
+  width: 13%;
+  padding: 10px;
+  gap: 0px;
+  border-radius: 16px;
+  opacity: 0px;
+  background: #F3F6FF;
+}
+
+.card-text {
+  font-size: 14px;
+}
+
+.card-content {
+  font-size: 35px;
+}
+
+.search-and-buts-row {
+  position: absolute;
+  height: Hug (44px)px;
+  width: 84%;
+  left: 15%;
+  justify-items: space-between;
+  opacity: 0px;
+}
+
+.search-and-buts {
+  display: inline-block;
+}
+
+.search {
+  padding: 0px 0px 0px 10px;
+}
+
+.input {
+  background-color: white;
+  color: black;
+  width: Fixed (300px)px;
+  height: Fixed (40px)px;
+  padding: 10px 20px 10px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid #EAECF0;
+  opacity: 0px;
+}
+
+.input::placeholder {
+  height: 30px;
+  color: #CCCCCC;
+  background: url(/public/Magnifer.svg) no-repeat 0px 4.5px;
+  padding-top: 10px;
+  padding-left: 30px;
+}
+
+.buts {
+  float: right;
+  padding: 0px 10px 0px 0px;
+  gap: 8px;
+}
+
+.but {
+  width: 40px;
+  height: 40px;
+  padding: 0px 0px 0px 10px;
+  gap: 10px;
+  opacity: 0px;
+  
+  background-color: white;
+  border-radius: 8px;
+  border: 0;
+}
+
+.but:hover{
+  background-color: #EAECF0;
+  cursor: pointer;
+}
+
+.notification {
+  background: url(/public/Bell.svg) no-repeat center;
+}
+
+.account {
+  background: url(/public/User\ Circle.svg) no-repeat center;
+}
+
+.h_line { 
+  position: absolute;
+  width: 84%; 
+  height:1px; 
+  background: #EAECF0;
+  margin-top: 70px;
+}
+
+.employ-header {
+  position: absolute;
+  font-family: Inter;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 35.2px;
+  text-align: left;
+  padding: 20px 20px 20px 60px;
+  width: 60%;
+  height: Hug (40px)px;
+  margin-top: 82px;
+  gap: 0px;
+  justify-content: space-between;
+  opacity: 0px;
+
+}
+
+.add-employee {
+  float: right;
+  width: 202px;
+  height: 40px;
+  gap: 0px;
+  border-radius: 8px;
+  border: 0;
+  opacity: 0px;
+  background: linear-gradient(95.99deg, #524EF8 4.95%, #9747FF 96.46%);
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17.6px;
+}
+
+.add-employee:hover{
+  filter: brightness(70%);
+  cursor: pointer;
+}
+
+.employees {
+  position: absolute;
+}
+
+.links{
+  position: relative;
+  width: 100%;
+  height: 24px;
+  top: 82px;
+  padding-left: 20px;
+  gap: 2px;
+  opacity: 0px;
+  display: flex;
+}
+
+.link {
+  color: #CCCCCC;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left;
+  text-decoration: none;
+  position: relative; 
+  padding: 4px 0px 0px 0px;
+}
+
+.currentPage {
+  color: #667085;
+
+}
+
+.cur_step {
+  background: linear-gradient(95.99deg, #524EF8 4.95%, #9747FF 96.46%);
+  color: white;
+}
+
+.step {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left;
+  width: 13%;
+}
+
+.employee-creation {
+  display: block;
+  padding: 10px;
+  bottom: 1%;
+}
+
+.info-container {
+  position: absolute;
+  width: 50%;
+  height: Hug (669px)px;
+  margin-top:180px;
+  margin-left: 2%;
+  gap: 0px;
+  opacity: 0px;
+}
+
+.info-extended {
+  color: #667085;
+  position: relative;
+  width: 100%;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 17.6px;
+  text-align: left;
+  
+}
+
+.inputFields {
+  position: relative;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 13.2px;
+  text-align: left;
+  margin-top: 10px;
+  width: 100%;
+  padding: 0px;
+}
+
+.inputField {
+  padding: 10px 0px 10px 0px;
+}
+
+.role {
+  height: 35px;
+}
+
+.behavior-settings {
+  height: 56px;
+}
+
+.point-of-dialog {
+  height: 56px;
+}
+
+.input-describe {
+  position: relative;
+  top: 3px;
+  left: 3px;
+}
+
+.employeeInfo {
+  color: #000;
+  position: relative;
+  width: 100%;
+  height: Hug (35px)px;
+  padding: 10px;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid #CCCCCC;
+  opacity: 0px;  
+  background-color: white;
+}
+
+.sex {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: center;
+  color: #000;
+  width: 100px;
+  height: 35px;
+  padding: 10px;
+
+  border-radius: 16px;
+  border: 1px solid #CCCCCC;
+  opacity: 0px;
+  background-color: white;
+}
+
+.sex:hover {
+  cursor: pointer;
+  filter: brightness(70%);
+}
+
+.choosen {
+  background: linear-gradient(95.99deg, #524EF8 4.95%, #9747FF 96.46%);
+  color: white;
+}
+
+.save-next-buttons {
+  position: relative;
+  float: right;
+  display: flex;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+
+.save,.next-step{
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: center;
+  background: #EAECF0;
+  color: #000;
+  width: 150px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 0;
+  opacity: 0px;
+}
+
+.next-step {
+  background: linear-gradient(95.99deg, #524EF8 4.95%, #9747FF 96.46%);
+  color:white;
+}
+
+.save:hover ,.next-step:hover {
+  cursor: pointer;
+  filter: brightness(70%);
+}
+
+.faded {
+  content: '';
+	background: #000;
+	position: fixed; 
+	left: 0;
+	top: 0;
+	width: 100%; 
+	height: 100%;
+	opacity: 0.7;
+	z-index: 9998;
+}
+
+.modal-save {
+  position: fixed;
+  background-color: white;
+  margin-top: 15%;
+  margin-left: 25%;
+  padding: 32px 44px 32px 43px;
+  gap: 0px;
+  border-radius: 8px;
+  border: 1px #667085 solid;
+  opacity: 0px;
+  width: 200px;
+  z-index: 9999;
+}
+
+.modal-confirm, .modal-close, .modal-close-1 {
+  position: relative;
+  width: 173px;
+  height: 40px;
+  padding: 10px 20px 10px 20px;
+  gap: 10px;
+  border: 0;
+  border-radius: 8px;
+  opacity: 0px;  
+  background: #49CF7E;
+  left: 14px;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+}
+
+.modal-close {
+  background: #CF5D49;
+}
+
+.modal-close-1 {
+  color: #000;
+  background: #EAECF0;
+  margin-bottom: 10px;
+}
+
+
+.modal-confirm:hover, .modal-close:hover, .modal-close-1:hover {
+  cursor: pointer;
+  filter: brightness(70%);
+}
+
+.modal-success, .modal-fail {
+  position: relative;
+  width: 173px;
+  height: 148px;
+  gap: 10px;
+  opacity: 0px;  
+  padding: 14px;
+}
+
+.knowledge-text {
+  width: 100%;
+}
+
+.knowledge-base {
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+.second-step-button-div {
+  border-radius: 8px;
+  padding: 1px;
+  background-image: linear-gradient(95.99deg, #524EF8 4.95%, #9747FF 96.46%);
+  
+}
+
+.second-step-button-button {
+  position: relative;
+  color: #000;
+  height: 40px;
+  padding: 10px 20px 35px 20px;
+  border-radius: 8px;
+  background-color: white;
+  opacity: 0px;
+  border: 0;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+}
+
+.open-file {
+  width: 100%;
+}
+
+.second-step-button-button:hover {
+  cursor: pointer;
+  filter: brightness(70%);
+}
+
+.second-step-button-button:active {
+  filter: brightness(50%);
+}
+
+.add-knowledge {
+  position: relative;
+  display: block;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.formatted-text-button-div, .text-document-button-div, .link-button-div {
+  margin-bottom: 10px;
+  width: 40%;
+}
+
+.formatted-text-button, .text-document-button, .link-button {
+  width: 100%;
+}
+
+.active-1 {
+  background-color: linear-gradient(95.99deg, #524EF8 4.95%, #9747FF 96.46%);
+}
+
+.icon-files {
+  position: relative;
+  top: 4px;
+  left: 3px;
+}
+
+.text-input-div {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: #2200ff;
+}
+
+.knowledge-form {
+  position: relative;
+  left: 50%;
+  margin-top: -25%;
+  width: 50%;
+  height: 100%;
+}
+
+.form-text-input {
+  color: #000;
+  position: relative;
+  width: 100%;
+  padding: 5px 5px 135px 5px;
+  border-radius: 8px;
+  border: 1px solid #CCCCCC;
+  opacity: 0px;  
+  background-color: white;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left; 
+}
+
+.form-link-input {
+  color: #000;
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #CCCCCC;
+  opacity: 0px;  
+  background-color: white;
+  margin-top: 15%;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left; 
+}
+
+.save-clear-buttons {
+  float: right;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+.save-button,.clear-button{
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: center;
+  background: #EAECF0;
+  color: #000;
+  width: fit-content;
+  height: 40px;
+  padding: 10px 40px 10px 40px;
+  border-radius: 8px;
+  border: 0;
+  opacity: 0px;
+}
+
+.clear-button {
+  background: linear-gradient(95.99deg, #524EF8 4.95%, #9747FF 96.46%);
+  color:white;
+}
+
+.save-button:hover ,.clear-button:hover {
+  cursor: pointer;
+  filter: brightness(70%);
+}
+
+.file-upload {
+  text-align: center;
+  border: 2px dashed #CCCCCC;
+  padding: 0px 1.5rem 1.6rem 1.5rem;
+  position: relative;
+  height: 140px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+.file-upload p {
+  font-size: 0.87rem;
+  margin-top: 0px;
+  color: #bbcada;
+}
+
+.file-upload input {
+  display: block;
+  height: 140px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-upload button {
+  color: #000;
+  width: Hug (191px)px;
+  height: Fixed (40px)px;
+  padding: 5px 20px 10px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid #CCCCCC;
+  background-color: white;
+  opacity: 0px; 
+}
+
+.file-upload button:hover {
+  filter: brightness(70%);
+  cursor: pointer;
+}
+
+.file-upload img {
+  position: relative;
+  top: 4px;
+  left: 3px;
+}
+
+.kostil {
+  position: relative;
+  height: 160px;
+}
+
+.third-step {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.third-step .info-extended {
+  margin-bottom: 10px;
+}
+
+.third-step .stages-container .how-to-fill {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.third-step .button-row {
+  padding: 10px 0px;
+}
+
+.third-step .button-row button {
+  width: Hug (183px)px;
+  height: 40px;
+  padding: 10px 20px 10px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  border: 0;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  
+}
+
+.third-step .button-row button:hover, .third-step .stages-container .stages button:hover {
+  filter: brightness(70%);
+  cursor: pointer;
+}
+
+.third-step .button-row button:active, .third-step .stages-container .stages button:active {
+  filter: brightness(50%);
+  cursor: pointer;
+}
+
+.third-step .button-row .clear {
+  float: right;
+  background: #EAECF0;
+  color: #000;
+}
+
+.third-step .button-row .generate {
+  background: linear-gradient(95.99deg, rgba(82, 78, 248, 0.7) 4.95%, rgba(151, 71, 255, 0.7) 96.46%);
+}
+
+.third-step .stages-container .stages {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left;
+  
+}
+
+.third-step .stages-container .stages .stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 0px;
+}
+
+.third-step .stages-container .stages .stage input {
+  padding: 10px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  border: 1px solid #CCCCCC;
+  background-color: white;
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left;
+}
+
+.third-step .stages-container .stages button {
+  width: Hug (183px)px;
+  height: 40px;
+  padding: 10px 20px 10px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  border: 0;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left;
+  background: #EAECF0;
+  color: #000;
+}
+
+.third-step .dialog-examples-container .examples-link {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.third-step .dialogs {
+  position: relative;
+}
+
+.third-step .dialogs .dialog {
+  position: relative;
+  display: inline-flex;
+  padding: 10px 0px;
+  gap: 30px;
+  width: 100%;
+}
+
+.third-step .dialogs .dialog .sender {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 30%;
+}
+
+.third-step .dialogs .dialog .sender input {
+  width: Hug (183px)px;
+  height: 40px;
+  padding: 10px 20px 10px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  border: 1px solid #CCCCCC;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left;
+  background: url(/public/ArrowDown.svg)  no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+  color: #000;
+}
+
+
+.third-step .dialogs .dialog .sender input:hover {
+  filter: brightness(70%);
+  cursor: pointer;
+}
+
+.third-step .dialogs .dialog .sender input:active {
+  filter: brightness(50%);
+  cursor: pointer;
+}
+
+.third-step .dialogs .dialog .sender .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.third-step .dialogs .dialog .sender .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.third-step .dialogs .dialog .sender .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+}
+
+.third-step .dialogs .dialog .sender .dropdown-content a:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.third-step .dialogs .dialog .sender .show {
+  display: block;
+}
+
+.third-step .dialogs .dialog .message {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 70%;
+}
+
+.third-step .dialogs .dialog .message input {
+  padding: 10px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  border: 1px solid #CCCCCC;
+  background-color: white;
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left;
+}
+
+.third-step .dialog-examples-container .add-dialog {
+  width: 100%;
+  height: 40px;
+  padding: 10px 20px 10px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  border: 0;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left;
+  background: #EAECF0;
+  color: #000;
+}
+
+.third-step .dialog-examples-container .add-dialog:hover {
+  filter: brightness(70%);
+  cursor: pointer;
+}
+
+.third-step .dialog-examples-container .add-dialog:active {
+  filter: brightness(50%);
+  cursor: pointer;
+}
+
+.third-step .greetings-messages-container .greetings-examples-link {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.third-step .greetings {
+  position: relative;
+}
+
+.third-step .greetings .greeting {
+  position: relative;
+  display: inline-flex;
+  padding: 10px 0px;
+  gap: 30px;
+  width: 100%;
+}
+
+.third-step .greetings .greeting .type {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 30%;
+}
+
+.third-step .greetings .greeting .type input {
+  width: Hug (183px)px;
+  height: 40px;
+  padding: 10px 20px 10px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  border: 1px solid #CCCCCC;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left;
+  background: url(/public/ArrowDown.svg)  no-repeat;
+  background-position-x: 95%;
+  background-position-y: center;
+  color: #000;
+}
+
+
+.third-step .greetings .greeting .type input:hover {
+  filter: brightness(70%);
+  cursor: pointer;
+}
+
+.third-step .greetings .greeting .type input:active {
+  filter: brightness(50%);
+  cursor: pointer;
+}
+
+.third-step .greetings .greeting .type .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.third-step .greetings .greeting .type .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 8px;
+}
+
+.third-step .greetings .greeting .type .dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  border-radius: 8px;
+}
+
+.third-step .greetings .greeting .type .dropdown-content a:hover {
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.third-step .greetings .greeting .type .show {
+  display: block;
+}
+
+.third-step .greetings .greeting .message {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 70%;
+}
+
+.third-step .greetings .greeting .message input {
+  padding: 10px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  border: 1px solid #CCCCCC;
+  background-color: white;
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left;
+}
+
+.third-step .greetings-messages-container .add-greetings {
+  width: 100%;
+  height: 40px;
+  padding: 10px 20px 10px 20px;
+  gap: 10px;
+  border-radius: 8px;
+  opacity: 0px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: top;
+  border: 0;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: left;
+  background: #EAECF0;
+  color: #000;
+}
+
+.third-step .greetings-messages-container .add-greetings:hover {
+  filter: brightness(70%);
+  cursor: pointer;
+}
+
+.third-step .greetings-messages-container .add-greetings:active {
+  filter: brightness(50%);
+  cursor: pointer;
+}
