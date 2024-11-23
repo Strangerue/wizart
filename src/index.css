@@ -448,6 +448,23 @@ ul {
   gap: 10px;
   padding-bottom: 10px;
 }
+.save-next-buttons > .submit-data {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 15.4px;
+  text-align: center;
+  background: #EAECF0;
+  color: #000;
+  width: 200px;
+  height: 40px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 0;
+  opacity: 0px;
+  background: linear-gradient(95.99deg, #524EF8 4.95%, #9747FF 96.46%);
+  color:white;
+}
 
 .save,.next-step{
   font-family: Inter;
@@ -470,7 +487,7 @@ ul {
   color:white;
 }
 
-.save:hover ,.next-step:hover {
+.save:hover ,.next-step:hover, .submit-data:hover {
   cursor: pointer;
   filter: brightness(70%);
 }

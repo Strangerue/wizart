@@ -181,27 +181,57 @@ class DialogStages extends React.Component {
         [
           <div className="stage" key={1}>
             Этап 1
-            <input type="text" id={"stage-input-" + 1} className="stage-input" />
+            <input type="text" id={"stage-input-" + 1} className="stage-input" onChange={this.handleChange} data-step={1} />
           </div>
-        ]
+        ],
+      stageData: [
+        {
+          step: 1,
+          value: ""
+        }
+      ]
     }
     this.stagesCount = 1;
     this.addStage = this.addStage.bind(this);
     this.clearStages = this.clearStages.bind(this);
+   // this.handleChange = this.handleChange.bind(this);
   }
 
+  handleChange = (event) => {
+    const value = event.target.value;
+    const step = parseInt(event.target.getAttribute('data-step'));
+
+    this.setState(prevState => {
+      const updatedStageData = prevState.stageData.map(stage => 
+        stage.step === step ? { ...stage, value: value } : stage
+      );
+      this.props.onUpdate({name: 'dialogStages', value: updatedStageData});
+      return { stageData: updatedStageData };
+    });
+  }
+  
   addStage() {
     this.stagesCount += 1;
     let n = this.stagesCount;
     let elem = [
       <div className="stage" key={n}>
         Этап {n}
-        <input type="text" id={"stage-input-" + n} className="stage-input" />
+        <input type="text" id={"stage-input-" + n} className="stage-input" onChange={this.handleChange} data-step={n} />
       </div>
       
     ]
-    this.setState(prevState => ({ ...prevState, container: this.state.container.concat(elem) }));
-  }
+    const newStage = [
+      {
+        step: n,
+        value: ""
+      }
+    ]
+
+    this.setState(prevState => ({
+      ...prevState,
+      stageData: prevState.stageData.concat(newStage),
+      container: prevState.container.concat(elem)
+    }));  }
 
   clearStages() {
     this.stagesCount = 0;
@@ -233,66 +263,86 @@ class DialogExamples extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      container:
-        [
-          <div className="dialog" key={1}>
-            <div className="sender">
-              Отправитель
-              <input value="Открыть список" type="button" id={"dropdownButton-" + 1} className="dropdownButton" onClick={() => {
-                document.getElementById("dropdownContent-" + 1).classList.toggle("show");
-              }} />
-              <div id={"dropdownContent-" + 1} class="dropdown-content">
-                <a onClick={() => {
-                  document.getElementById("dropdownButton-" + 1).value = "ИИ агент";
-                }}>ИИ агент</a>
-                <a onClick={() => {
-                  document.getElementById("dropdownButton-" + 1).value = "Пользователь";
-                }}>Пользователь</a>
-              </div>
-            </div>
-            <div className="message">
-              Сообщение
-              <input type="text" className="message-input" />
-            </div>
-          </div>
-        ]
-    }
+      dialogData: [
+        {
+          sender: "Открыть список",
+          message: ""
+        }
+      ]
+    };
+
     this.dialogsCount = 1;
     this.addDialog = this.addDialog.bind(this);
+    this.updateSender = this.updateSender.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
+
+  updateSender(step, sender) {
+    this.setState(prevState => {
+      const updatedDialogData = prevState.dialogData.map((dialog, index) =>
+        index === step - 1 ? { ...dialog, sender: sender } : dialog
+      );
+  
+      this.props.onUpdate({ name: 'dialogExample', value: updatedDialogData });
+  
+      console.log(updatedDialogData)
+      return { dialogData: updatedDialogData };
+    });
+  }
+
+
+  handleChange(event, step) {
+    const value = event.target.value;
+  
+    this.setState(prevState => {
+      const updatedDialogData = prevState.dialogData.map((dialog, index) =>
+        index === step - 1 ? { ...dialog, message: value } : dialog
+      );
+      const transformedData = updatedDialogData.map(dialog => ({
+        role: dialog.sender,
+        content: dialog.message
+      }));
+
+      this.props.onUpdate({ name: 'dialogExample', value: transformedData });
+  
+      return { dialogData: updatedDialogData };
+    });
+  }
+
 
   addDialog() {
     this.dialogsCount += 1;
-    let n = this.dialogsCount;
-    let elem = [
-      <div className="dialog" key={n}>
-        <div className="sender">
-          Отправитель
-          <input value="Открыть список" type="button" id={"dropdownButton-" + n} className="dropdownButton" onClick={() => {
-            document.getElementById("dropdownContent-" + n).classList.toggle("show");
-          }} />
-          <div id={"dropdownContent-" + n} class="dropdown-content">
-            <a onClick={() => {
-              document.getElementById("dropdownButton-" + n).value = "ИИ агент";
-            }}>ИИ агент</a>
-            <a onClick={() => {
-              document.getElementById("dropdownButton-" + n).value = "Пользователь";
-            }}>Пользователь</a>
-          </div>
-        </div>
-        <div className="message">
-          Сообщение
-          <input type="text" className="message-input" />
-        </div>
-      </div>
-    ]
-    this.setState(prevState => ({ ...prevState, container: this.state.container.concat(elem) }));
+    const newDialog = {
+      sender: "Открыть список",
+      message: ""
+    };
+
+    this.setState(prevState => ({
+      dialogData: prevState.dialogData.concat(newDialog)
+    }));
   }
 
   render() {
     return (
       <div className="dialogs">
-        {this.state.container}
+        {this.state.dialogData.map((dialog, index) => (
+          <div className="dialog" key={index + 1}>
+            <div className="sender">
+              Отправитель
+              <input value={dialog.sender} type="button" id={"dropdownButton-" + (index + 1)} className="dropdownButton" onClick={() => {
+                document.getElementById("dropdownContent-" + (index + 1)).classList.toggle("show");
+              }} />
+              <div id={"dropdownContent-" + (index + 1)} className="dropdown-content">
+                <a onClick={() => this.updateSender(index + 1, "ИИ агент")}>ИИ агент</a>
+                <a onClick={() => this.updateSender(index + 1, "Пользователь")}>Пользователь</a>
+              </div>
+            </div>
+            <div className="message">
+              Сообщение
+              <input type="text" className="message-input" value={dialog.message} onChange={(e) => this.handleChange(e, index + 1)} />
+            </div>
+          </div>
+        ))}
         <button className="add-dialog" onClick={this.addDialog}>+ Добавить диалог</button>
       </div>
     );
@@ -303,66 +353,62 @@ class Greetings extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      container:
-        [
-          <div className="greeting" key={1}>
-            <div className="type">
-              Тип
-              <input value="Открыть список" type="button" id="dropdownButton-greet-1" className="dropdownButton" onClick={() => {
-                document.getElementById("dropdownContent-greet-1").classList.toggle("show");
-              }} />
-              <div id="dropdownContent-greet-1" class="dropdown-content">
-                <a onClick={() => {
-                  document.getElementById("dropdownButton-greet-1").value = "ИИ агент";
-                }}>ИИ агент</a>
-                <a onClick={() => {
-                  document.getElementById("dropdownButton-greet-1").value = "Пользователь";
-                }}>Пользователь</a>
-              </div>
-            </div>
-            <div className="message">
-              Сообщение
-              <input type="text" className="message-input" />
-            </div>
-          </div>
+        welcomeMessages: [
+          "Привет. Меня зовут Владимир, я из агентства  <<Нева>>..."
         ]
     }
     this.GreetsCount = 1;
     this.addGreet = this.addGreet.bind(this);
   }
 
+  handleChange(event, step) {
+    const value = event.target.value;
+  
+    this.setState(prevState => {
+      const updateWelcomeMessages = prevState.welcomeMessages.map((message, index) =>
+        index === step  ? value : message
+      );
+  
+      this.props.onUpdate({ name: 'welcomeMessages', value: updateWelcomeMessages });
+  
+      return { welcomeMessages: updateWelcomeMessages };
+    });
+  }
+
   addGreet() {
     this.GreetsCount += 1;
-    let n = this.GreetsCount;
-    let elem = [
-      <div className="greeting" key={n}>
-        <div className="type">
-          Тип
-          <input value="Открыть список" type="button" id={"dropdownButton-greet-" + n} className="dropdownButton" onClick={() => {
-            document.getElementById("dropdownContent-greet-" + n).classList.toggle("show");
-          }} />
-          <div id={"dropdownContent-greet-" + n} class="dropdown-content">
-            <a onClick={() => {
-              document.getElementById("dropdownButton-greet-" + n).value = "ИИ агент";
-            }}>ИИ агент</a>
-            <a onClick={() => {
-              document.getElementById("dropdownButton-greet-" + n).value = "Пользователь";
-            }}>Пользователь</a>
-          </div>
-        </div>
-        <div className="message">
-          Сообщение
-          <input type="text" className="message-input" />
-        </div>
-      </div>
-    ]
-    this.setState(prevState => ({ ...prevState, container: this.state.container.concat(elem) }));
+    const newWelcomeMessage = "Привет!"
+
+    this.setState(prevState => ({
+      welcomeMessages: prevState.welcomeMessages.concat(newWelcomeMessage)
+    }));
   }
 
   render() {
     return (
       <div className="greetings">
-        {this.state.container}
+        {this.state.welcomeMessages.map((message,index) => (
+                <div className="greeting" key={index}>
+                <div className="type">
+                  Тип
+                  <input value="Открыть список" type="button" id={"dropdownButton-greet-" + index} className="dropdownButton" onClick={() => {
+                    document.getElementById("dropdownContent-greet-" + index).classList.toggle("show");
+                  }} />
+                  <div id={"dropdownContent-greet-" + index} className="dropdown-content">
+                    <a onClick={() => {
+                      document.getElementById("dropdownButton-greet-" + index).value = "ИИ агент";
+                    }}>ИИ агент</a>
+                    <a onClick={() => {
+                      document.getElementById("dropdownButton-greet-" + index).value = "Пользователь";
+                    }}>Пользователь</a>
+                  </div>
+                </div>
+                <div className="message">
+                  Сообщение
+                  <input type="text" placeholder={message} onChange={(e) => this.handleChange(e,index)} className="message-input" />
+                </div>
+              </div>
+        ))}
         <button className="add-greetings" onClick={this.addGreet}>+ Добавить сообщение</button>
       </div>
     );
@@ -370,7 +416,26 @@ class Greetings extends React.Component {
 }
 
 class NewEmployeePage extends React.Component {
-  state = { currentStep: 1, show: false }
+  state = {
+    currentStep: 1,
+    show: false,
+    form: 0,
+    fileUpload: false,
+    employeeName: '',
+    agentName: '',
+    sex: 'Женский',
+    role: '',
+    behaviorSettings: '',
+    pointOfDialog: '',
+    companyName: '',
+    business: '',
+    companyValues: '',
+    knowledgeBase: [],
+    dialogStages: [],
+    dialogExample: [],
+    welcomeMessages: []
+  };
+  
   constructor(props) {
     super(props);
     this.state = { currentStep: 1, show: false, form: 0, fileUpload: false };
@@ -379,11 +444,57 @@ class NewEmployeePage extends React.Component {
     this.nextStep = this.nextStep.bind(this);
     this.setForm = this.setForm.bind(this);
     this.GetForm = this.GetForm.bind(this);
+    this.submitData = this.submitData.bind(this);
+    this.updateData = this.updateData.bind(this);
     this.infoSaved = false;
   }
 
   setForm(n) {
     this.setState(prevState => ({ ...prevState, form: n }));
+  }
+
+  updateData(event) {
+    if (event?.target) {
+      const { name, value } = event.target;
+      this.setState({ [name]: value });  
+    } else {
+      const { name, value } = event;
+      this.setState({ [name]: value });
+    }
+  }
+
+  submitData() {
+    const data = {
+      employeeName: this.state.employeeName,
+      agentName: this.state.agentName,
+      sex: this.state.sex || 'Женский',
+      role: this.state.role,
+      behaviorSettings: this.state.behaviorSettings,
+      pointOfDialog: this.state.pointOfDialog,
+      companyName: this.state.companyName,
+      business: this.state.business,
+      companyValues: this.state.companyValues,
+      knowledgeBase: this.state.knowledgeBase,
+      dialogStages: this.state.dialogStages,
+      dialogExample: this.state.dialogExample,
+      welcomeMessages: this.state.welcomeMessages,
+    };
+
+    console.log(data)
+    fetch(`http://${import.meta.env.VITE_CORE}:5000/subscription/90123`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Успех:', data);
+    })
+    .catch((error) => {
+      console.error('Ошибка:', error);
+    });
   }
 
   GetForm(n) {
@@ -438,24 +549,26 @@ class NewEmployeePage extends React.Component {
         <div className="inputFields">
           <div className="inputField">
             <div>Название сотрудника<img src="/Danger Circle.svg" alt="" className="input-describe" /></div> <br />
-            <input type="text" className="employeeInfo" />
+            <input type="text" name="employeeName" onChange={this.updateData} className="employeeInfo" />
           </div>
           <div className="inputField">
             <div>Имя агента<img src="/Danger Circle.svg" alt="" className="input-describe" /></div> <br />
-            <input type="text" className="employeeInfo" />
+            <input type="text"name="agentName" onChange={this.updateData}  className="employeeInfo" />
           </div>
           <div className="inputField">
             <div>Пол<img src="/Danger Circle.svg" alt="" className="input-describe" /></div> <br />
             <div className="radio-sex">
-              <button className="sex" id='male' onClick={function () {
+              <button className="sex" id='male' onClick={() => {
                 document.getElementById("female").classList.remove("choosen");
                 document.getElementById("male").classList.add("choosen");
+                this.setState({sex: 'Мужской'})
               }}>
                 Мужской
               </button>
-              <button className="sex choosen" id='female' onClick={function () {
+              <button className="sex choosen" id='female' onClick={() => {
                 document.getElementById("male").classList.remove("choosen");
                 document.getElementById("female").classList.add("choosen");
+                this.setState({sex: 'Женский'})
               }}>
                 Женский
               </button>
@@ -463,15 +576,15 @@ class NewEmployeePage extends React.Component {
           </div>
           <div className="inputField">
             <div>Роль сотрудника в компании<img src="/Danger Circle.svg" alt="" className="input-describe" /></div> <br />
-            <input type="text" className="employeeInfo role" />
+            <input type="text" name="role" onChange={this.updateData} className="employeeInfo role" />
           </div>
           <div className="inputField">
             <div>Настройка поведения агента<img src="/Danger Circle.svg" alt="" className="input-describe" /></div><br />
-            <input type="text" className="employeeInfo behavior-settings" />
+            <input type="text" name="behavior" onChange={this.updateData} className="employeeInfo behavior-settings" />
           </div>
           <div className="inputField">
             <div>Цель диалога<img src="/Danger Circle.svg" alt="" className="input-describe" /></div> <br />
-            <input type="text" className="employeeInfo point-of-dialog" />
+            <input type="text" name="pointOfDialog" onChange={this.updateData} className="employeeInfo point-of-dialog" />
           </div>
         </div>
       </div>
@@ -485,23 +598,23 @@ class NewEmployeePage extends React.Component {
         <div className="inputFields">
           <div className="inputField">
             <div>Название компании<img src="/Danger Circle.svg" alt="" className="input-describe" /></div> <br />
-            <input type="text" className="employeeInfo" />
+            <input type="text"name="companyName" onChange={this.updateData}  className="employeeInfo" />
           </div>
           <div className="inputField">
             <div>Бизнес компании<img src="/Danger Circle.svg" alt="" className="input-describe" /></div> <br />
-            <input type="text" className="employeeInfo" />
+            <input type="text" name="business" onChange={this.updateData} className="employeeInfo" />
           </div>
           <div className="inputField">
             <div>Ценности компании<img src="/Danger Circle.svg" alt="" className="input-describe" /></div> <br />
-            <input type="text" className="employeeInfo role" />
+            <input type="text" name="companyValues" onChange={this.updateData} className="employeeInfo role" />
           </div>
           <div className="inputField">
             <div>Роль сотрудника в компании<img src="/Danger Circle.svg" alt="" className="input-describe" /></div><br />
-            <input type="text" className="employeeInfo behavior-settings" />
+            <input type="text" name="role" onChange={this.updateData} className="employeeInfo behavior-settings" />
           </div>
           <div className="inputField">
             <div>Настройка поведения агента<img src="/Danger Circle.svg" alt="" className="input-describe" /></div> <br />
-            <input type="text" className="employeeInfo point-of-dialog" />
+            <input type="text" name="behavior" onChange={this.updateData} className="employeeInfo point-of-dialog" />
           </div>
         </div>
         <div className="knowledge-base">
@@ -576,7 +689,7 @@ class NewEmployeePage extends React.Component {
             Описание поведение ИИ — агента на каждом этапе диалога с клиентом
           </div>
           <Link className="how-to-fill">Как заполнить этап?</Link>
-          <DialogStages></DialogStages>
+          <DialogStages onUpdate={this.updateData}></DialogStages>
         </div>
         <div className="dialog-examples-container">
           <h3>Пример диалога</h3>
@@ -584,7 +697,7 @@ class NewEmployeePage extends React.Component {
             Пример диалога из 10 — 15 сообщений для обучения ИИ агента
           </div>
           <Link className="examples-link">Посмотреть примеры диалогов</Link>
-          <DialogExamples></DialogExamples>
+          <DialogExamples onUpdate={this.updateData}></DialogExamples>
 
         </div>
         <div className="greetings-messages-container">
@@ -594,7 +707,7 @@ class NewEmployeePage extends React.Component {
             неизменном виде и чередуются от пользователя к пользователю.Рекомендуемое максимальное количество сообщений — 2
           </div>
           <Link className="greetings-examples-link">Посмотреть примеры приветственных сообщений</Link>
-          <Greetings></Greetings>
+          <Greetings onUpdate={this.updateData} ></Greetings>
         </div>
       </div>
 
@@ -652,6 +765,7 @@ class NewEmployeePage extends React.Component {
   }
 
   render() {
+    const isLastStep = this.state.currentStep === 6;
     return (
       <div id="employee-creation">
         <ul className="search-and-buts-row">
@@ -721,7 +835,11 @@ class NewEmployeePage extends React.Component {
           {this.EmployeeCreation()}
           <div className="save-next-buttons">
             <button className="save" onClick={this.showModal}>Сохранить</button>
-            <button className="next-step" onClick={this.nextStep}>Следующий шаг</button>
+            {isLastStep ? (
+            <button className="submit-data" onClick={this.submitData}>Создать сотрудника</button>
+            ) : (
+              <button className="next-step" onClick={this.nextStep}>Следующий шаг</button>
+            )}
           </div>
         </div>
         <div id="overlay" className="overlay"></div>
