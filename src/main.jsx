@@ -7,7 +7,7 @@ import { ReactKeycloakProvider } from '@react-keycloak/web';
 
 // Настройка Keycloak
 const keycloak = new Keycloak({
-  url: `http://${import.meta.env.VITE_KEYCLOACK_ADDRESS}`, 
+  url: `https://${import.meta.env.VITE_KEYCLOACK_ADDRESS}`, 
   realm: import.meta.env.VITE_KEYCLOACK_REALM,
   clientId: import.meta.env.VITE_KEYCLOACK_CLIENT_ID
 });

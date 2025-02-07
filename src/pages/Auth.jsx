@@ -5,6 +5,7 @@ import { useLocation, Navigate } from 'react-router-dom';
 const Auth = () => {
   const { keycloak, initialized } = useKeycloak();
   console.log(keycloak)
+  console.log(initialized)
   if (!initialized) {
     return <div>Loading...</div>;
   }
